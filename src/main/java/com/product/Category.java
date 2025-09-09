@@ -10,12 +10,11 @@ public class Category {
     /*
      * Metodo Constructor
      */
-    public Category(Integer category_id, String category, String tag) {
+    public Category(Integer category_id, String category, String tag, Integer status ) {
         this.category_id = category_id;
         this.category = category;
         this.tag = tag;
-        // Activo por defecto
-        this.status = 1; 
+        this.status = status; 
     }
 
     /*
