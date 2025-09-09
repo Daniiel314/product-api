@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/category")
 public class CtrlProduct {
-	@GetMapping("/category")
-	public Category[] getCategories() {
+    @GetMapping
+    public Category[] getCategories() {
         Category[] categories = {
-            new Category(1, "Lentes", "Lts"),
-            new Category(2, "Relojes", "Rljs"),
-            new Category(3, "Carteras", "Ctrs"),
+            new Category(1, "Lentes", "Lts", 1),
+            new Category(2, "Relojes", "Rljs", 1),
+            new Category(3, "Carteras", "Ctrs", 1),
         };
         return categories;
-	}
+    }
 }
 
