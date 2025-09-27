@@ -1,4 +1,4 @@
-package com.product.api.controller;
+	package com.product.api.controller;
 
 import com.product.api.commons.dto.ApiResponse;
 import com.product.api.dto.DtoCategoryIn;
@@ -30,27 +30,27 @@ public class CtrlCategory {
     	return ResponseEntity.ok(svc.findAll());
     }
     
-    @GetMapping("/active")
+    @GetMapping("/category/active")
     public ResponseEntity<List<Category>> findActive(){
     	return ResponseEntity.ok(svc.findActive());
     }
     
-    @PostMapping
+    @PostMapping("/category")
     public ResponseEntity<ApiResponse> create(@Valid @RequestBody DtoCategoryIn in) {
         return ResponseEntity.ok(svc.create(in));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/category/{id}")
     public ResponseEntity<ApiResponse> update(@PathVariable Integer id, @Valid @RequestBody DtoCategoryIn in) {
         return ResponseEntity.ok(svc.update(in, id));
     }
     
-    @PatchMapping("/{id}/enable")
+    @PatchMapping("/category/{id}/enable")
     public ResponseEntity<ApiResponse> enable(@PathVariable Integer id) {
         return ResponseEntity.ok(svc.enable(id));
     }
     
-    @PatchMapping("/{id}/disable")
+    @PatchMapping("/category/{id}/disable")
     public ResponseEntity<ApiResponse> disable(@PathVariable Integer id) {
         return ResponseEntity.ok(svc.disable(id));
     }

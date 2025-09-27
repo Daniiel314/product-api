@@ -10,6 +10,7 @@ public class ApiException extends RuntimeException{
 		super(message);
 		this.status = status;
 	}
+	
 	//Getters y Setters
 
 	public HttpStatus getStatus() {
