@@ -1,7 +1,7 @@
-	package com.product.api.controller;
+package com.product.api.controller;
 
 import com.product.api.commons.dto.ApiResponse;
-import com.product.api.dto.DtoCategoryIn;
+import com.product.api.dto.in.DtoCategoryIn;
 import com.product.api.entity.Category;
 import com.product.api.service.SvcCategory;
 
