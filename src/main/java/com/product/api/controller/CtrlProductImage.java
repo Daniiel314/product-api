@@ -18,8 +18,11 @@ import com.product.api.dto.in.DtoProductImageIn;
 import com.product.api.dto.out.DtoProductImageOut;
 import com.product.api.service.SvcProductImage;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "ProductImage", description = "Gestión de imágenes de productos")
 @RestController
 @RequestMapping("/product")
 public class CtrlProductImage {
@@ -27,20 +30,16 @@ public class CtrlProductImage {
     @Autowired
     SvcProductImage svcProductImage;
 
-    /**
-     * GET /product/{id}/image
-     * Devuelve todas las imágenes del producto en Base64.
-     */
+    @Operation(summary = "Listar imágenes", 
+    		description = "Devuelve las imágenes (Base64) de un producto.")
     @GetMapping("/{id}/image")
     public ResponseEntity<List<DtoProductImageOut>> getProductImages(@PathVariable("id") Integer productId) {
         List<DtoProductImageOut> images = svcProductImage.getImages(productId);
         return new ResponseEntity<>(images, HttpStatus.OK);
     }
 
-    /**
-     * POST /product/{id}/image
-     * Sube una nueva imagen para el producto.
-     */
+    @Operation(summary = "Subir imagen", 
+    		description = "Registra una imagen para el producto.")
     @PostMapping("/{id}/image")
     public ResponseEntity<ApiResponse> createProductImage(
             @PathVariable("id") Integer productId,
@@ -50,10 +49,8 @@ public class CtrlProductImage {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    /**
-     * DELETE /product/{id}/image/{product-image-id}
-     * Elimina la imagen de un producto.
-     */
+    @Operation(summary = "Eliminar imagen", 
+    		description = "Elimina una imagen del producto.")
     @DeleteMapping("/{id}/image/{product-image-id}")
     public ResponseEntity<ApiResponse> deleteProductImage(
             @PathVariable("id") Integer productId,
