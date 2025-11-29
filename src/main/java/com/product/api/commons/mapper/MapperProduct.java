@@ -9,6 +9,8 @@ import com.product.api.dto.in.DtoProductIn;
 import com.product.api.dto.out.DtoProductListOut;
 import com.product.api.entity.Product;
 
+import com.product.api.dto.out.DtoProductOut;
+
 @Service
 public class MapperProduct {
 	
@@ -44,5 +46,18 @@ public class MapperProduct {
 		product.setProduct_id(id);
 		return product;
 	}
+	
+	public DtoProductOut toDto(Product product) {
+        DtoProductOut dto = new DtoProductOut();
+        dto.setProduct_id(product.getProduct_id());
+        dto.setGtin(product.getGtin());
+        dto.setProduct(product.getProduct());
+        dto.setDescription(product.getDescription());
+        dto.setPrice(product.getPrice());
+        dto.setStock(product.getStock());
+        dto.setCategory_id(product.getCategory_id());
+        dto.setStatus(product.getStatus());
+        return dto;
+    }
 	
 }
