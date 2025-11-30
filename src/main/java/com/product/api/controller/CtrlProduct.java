@@ -18,7 +18,7 @@ import com.product.api.dto.out.DtoProductListOut;
 import com.product.api.dto.out.DtoProductOut;
 import com.product.api.service.SvcProduct;
 import com.product.api.commons.dto.ApiResponse;
-import io.swagger.v3.oas.annotations.Operation; // Importación añadida
+import io.swagger.v3.oas.annotations.Operation; 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
@@ -75,5 +75,15 @@ public class CtrlProduct {
 	@PatchMapping("/{id}/disable")
 	public ResponseEntity<ApiResponse> disableProduct(@PathVariable Integer id) {
 		return svc.disableProduct(id);
+	}
+	
+	@GetMapping("/gtin/{gtin}")
+	public ResponseEntity<DtoProductOut> getProductByGtin(@PathVariable String gtin) {
+	    return ResponseEntity.ok(svc.getProductByGtin(gtin));
+	}
+
+	@PutMapping("/{gtin}/stock")
+	public ResponseEntity<ApiResponse> updateProductStock(@PathVariable String gtin, @RequestBody Integer quantity) {
+	    return ResponseEntity.ok(svc.updateStock(gtin, quantity));
 	}
 }
