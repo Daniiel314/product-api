@@ -1,5 +1,6 @@
 HELP.md
 /target/
+/bin/
 
 ### STS ###
 .apt_generated
@@ -26,4 +27,3 @@ build/
 
 ### VS Code ###
 .vscode/
-

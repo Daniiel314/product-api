@@ -18,6 +18,8 @@ import com.product.api.commons.mapper.MapperProduct;
 import com.product.exception.ApiException;
 import com.product.exception.DBAccessException;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class SvcProductImp implements SvcProduct{
 	
@@ -123,6 +125,26 @@ public class SvcProductImp implements SvcProduct{
 		}catch (DataAccessException e) {
 			throw new DBAccessException(e);
 		}
+	}
+	
+	@Override
+	public DtoProductOut getProductByGtin(String gtin) {
+	    Product product = repo.findByGtinAndStatus(gtin, 1)
+	            .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "product not found"));
+	    return mapper.toDto(product); // Asegúrate de tener este mapper o hazlo manual
+	}
+
+	@Override
+	@Transactional
+	public ApiResponse updateStock(String gtin, Integer quantity) {
+	    Product product = repo.findByGtinAndStatus(gtin, 1)
+	            .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "product not found"));
+	    
+	    if (product.getStock() < quantity)
+	        throw new ApiException(HttpStatus.BAD_REQUEST, "stock not sufficient");
+	    
+	    repo.updateStock(gtin, quantity);
+	    return new ApiResponse("stock updated");
 	}
 
 }
