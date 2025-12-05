@@ -18,10 +18,11 @@
     <name>product</name>
     <description>product app</description>
 
-    <properties>
-        <java.version>17</java.version>
-        <spring-cloud.version>2023.0.3</spring-cloud.version>
-    </properties>
+	<properties>
+	    <java.version>17</java.version>
+	    <spring-cloud.version>2023.0.3</spring-cloud.version>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
     <!--NECESARIO para habilitar las versiones de Spring Cloud -->
     <dependencyManagement>
