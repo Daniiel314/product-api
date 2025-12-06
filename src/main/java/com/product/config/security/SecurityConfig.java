@@ -28,6 +28,8 @@ public class SecurityConfig {
 				// Público
 				.requestMatchers(HttpMethod.POST, "/usuario", "/login").permitAll()
 				
+				.requestMatchers("/product/gtin/**").permitAll()
+				
 				// Category
 				.requestMatchers(HttpMethod.GET, "/category/active").hasAnyAuthority("ADMIN", "CUSTOMER")
 				.requestMatchers("/category/**").hasAuthority("ADMIN")
